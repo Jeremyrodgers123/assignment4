@@ -162,10 +162,10 @@ Quadrilateral readInputAsQuad(std::fstream& inputStream){
 void getInnerAngles(std::vector<Quadrilateral>& quadrilaterals){
     //check to see if we have all sides
     for(Quadrilateral& quadrilateral : quadrilaterals){
-        if(!hasAllSides(quadrilateral)){
-            std::cout << "Error: need all sides to get angles" << std::endl;
-            throw;
-        };
+//        if(!hasAllSides(quadrilateral)){
+//            std::cout << "Error: need all sides to get angles" << std::endl;
+//            throw;
+//        };
         //Splits the quadrilateral into 2 triangles so to be able to find the angles.
         //triangle 1
         quadrilateral.bLeft.innerAngle = calcInnerAngle(quadrilateral.sideA.len, quadrilateral.sideD.len, quadrilateral.dividingLine.len);
@@ -243,11 +243,8 @@ void printToFile(std::string filename, const std::vector<Quadrilateral>& quadril
     std::ofstream filestream;
     filestream.open(filename);
     for(int i = 0; i < quadrilaterals.size(); i++){
-        filestream << "***********************************" << std::endl;
-        if(quadrilaterals[i].type.size() == 0){
-            filestream << "**error" << std::endl;
-        }
-        filestream << "type: " << quadrilaterals[i].type << std::endl;
+//        filestream << "***********************************" << std::endl;
+        filestream << quadrilaterals[i].type << std::endl;
     }
     filestream.close();
 }
