@@ -1,5 +1,7 @@
+all : quadrilaterals
+
 quadrilaterals : 
-	clang++ -std=c++11 -o main main.cpp
+	clang++ -std=c++11 main.cpp -o main 
 
 clean : 
 	-rm main.o assignment04 main.profraw main.profdata main 
