@@ -1,8 +1,5 @@
-quadrilaterals : main.o
-	clang++ -std=c++11 -fprofile-instr-generate -fcoverage-mapping -o main main.o
-
-main.o : main.cpp
-	clang++ -std=c++11 -c main.cpp 
+quadrilaterals : 
+	clang++ -std=c++11 -o main main.cpp
 
 clean : 
 	-rm main.o assignment04 main.profraw main.profdata main 
