@@ -241,7 +241,7 @@ void hasVaidInputStream(std::istream& inputStream, std::ofstream& outputStream){
     if(inputStream.fail()){
         outputStream << "error 1" << std::endl;
         outputStream.close();
-        exit(1);
+        exit(0);
     }
 }
 
@@ -256,7 +256,7 @@ void printError(int errorNum, std::ofstream& outputStream ){
     outputStream << "error " << errorNum << std::endl;
     std::cout << "error " << errorNum << std::endl;
     outputStream.close();
-    exit(1);
+    exit(0);
 }
 bool hasSameYVals(double y1, double y2){
     return y1 == y2;

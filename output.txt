@@ -13,4 +13,3 @@ quadrilateral
 parallelagram
 rhombus
 trapezoid
-error 1
