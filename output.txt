@@ -1,22 +1,2 @@
-parallelagram
-square
-rectangle
 trapezoid
-kite
-quadrilateral
-quadrilateral
-quadrilateral
-square
-trapezoid
-rectangle
-kite
-trapezoid
-square
-trapezoid
-parallelagram
-kite
-kite
-quadrilateral
-parallelagram
-rhombus
-trapezoid
+error 4
