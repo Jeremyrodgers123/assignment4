@@ -1,0 +1,7 @@
+4 -2 6 0 4 2kite
+2 -2 5 -8 2 5quadrilateral
+4 -1 2 1 2 5quadrilateral
+2 -2 4 0 2 2square
+2 -2 6 2 2 2trapezoid
+2 -2 6 2 4 4rectangle
+4 -2 2 0 4 2kite

@@ -2,14 +2,7 @@ parallelagram
 square
 rectangle
 trapezoid
-kite
 quadrilateral
-quadrilateral
-quadrilateral
-square
-trapezoid
-rectangle
-kite
 trapezoid
 square
 trapezoid
@@ -20,3 +13,4 @@ quadrilateral
 parallelagram
 rhombus
 trapezoid
+error 1
