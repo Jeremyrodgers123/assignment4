@@ -1,8 +1,8 @@
 #!/bin/bash
 
-./main input.txt output.txt
-
-diff expectedOutput.txt output.txt
+#./main input.txt output.txt
+compareFiles(){
+diff $1 $2
 
 val=$?
 if [ $val -eq 0 ]
@@ -11,8 +11,11 @@ echo "PASS"
 elif [ $val -eq 1 ]
 then
 echo "FAIL"
-exit 1 
+exit 1
 else
 echo "ERROR"
 exit 1
 fi
+}
+
+compareFiles $1 $2
