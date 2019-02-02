@@ -1,17 +1,18 @@
 puts "Hello world";
 inputFiles = ["input","coincidingInput", "colinearInput", "intersectingInput","badInput"];
 outputFiles = ["output", "coincidingOutput", "colinearOutput", "intersectingOutput", "badOutput"]
-expectedOutputFiles = ["./expected/expectedOutput", "./expected/expectedCoincidingOutput", "./expected/expectedColinearOutput", "./expected/expectedIntersectingOutput", "./expected/expectedBadOutput"]
+expectedOutputFiles = ["expectedOutput", "expectedCoincidingOutput", "expectedColinearOutput", "expectedIntersectingOutput", "expectedBadOutput"]
 
-system "touch ./coverage/blanktest.profdata";
-lastTest = "blank";
 
+prevCoverage = "blanktest"
 for i in 0..inputFiles.length-1 do
-    currentTest = inputFiles[i];
     system( "./main ./inputFiles/#{ inputFiles[i]}.txt ./outputFiles/#{ outputFiles[i] }.txt");
     puts"outputFile: #{outputFiles[i]}"
-#    system("LLVM_PROFILE_FILE=main.profraw ./main")
+    system("xcrun llvm-profdata merge -sparse #{prevCoverage}.profdata default.profraw -o #{inputFiles[i]}.profdata");
 #    system("xcrun llvm-profdata merge -sparse ./coverage/#{lastTest}.profdata ./default.profraw -o ./coverage/#{currentTest}.profdata");
-    system( "./test.sh #{expectedOutputFiles[i] }.txt ./outputFiles/#{ outputFiles[i] }.txt ")
-    lastTest = currentTest;
+    system( "./test.sh ./expected/#{expectedOutputFiles[i] }.txt ./outputFiles/#{ outputFiles[i] }.txt ")
+    system("rm #{prevCoverage}.profdata")
+    prevCoverage = "#{inputFiles[i]}"
 end
+system("xcrun llvm-profdata merge -sparse #{prevCoverage}.profdata -o main.profdata");
+system("xcrun llvm-cov show ./main -instr-profile=main.profdata main.cpp");

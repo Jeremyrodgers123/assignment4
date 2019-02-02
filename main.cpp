@@ -69,11 +69,6 @@ double isColinear(Point point0, Point point1, Point point2){
     return (areEqual(area, 0)) ? true : false;
 }
 
-bool isBetweenPoints(Point A, Point B, Point C, Point D){
-    
-    return false;
-}
-
 Point findMax(std::vector<Point> list){
     double maxX = INT_MIN;
     double maxY = INT_MIN;
@@ -202,20 +197,6 @@ void countUniqueSides(Quadrilateral& quadrilateral){
     quadrilateral.uniqueSideLen.insert(quadrilateral.sideD.len);
 }
 
-
-//checks that a quadrilateral has all of its sides
-bool hasAllSides(const Quadrilateral& quadrilateral){
-    if(quadrilateral.sideA.len <= 0 ||
-       quadrilateral.sideB.len <= 0 ||
-       quadrilateral.sideC.len <= 0 ||
-       quadrilateral.sideD.len <= 0 ||
-       quadrilateral.dividingLine.len <= 0){
-        return false;
-    }
-    return true;
-}
-
-
 void measureSides(Quadrilateral& quadrilateral){
     quadrilateral.sideA.len = calcDistance(quadrilateral.bLeft, quadrilateral.bRight);
     quadrilateral.sideB.len = calcDistance(quadrilateral.bRight, quadrilateral.tRight);
@@ -231,17 +212,11 @@ void measureSides(Quadrilateral& quadrilateral){
     countUniqueSides(quadrilateral);
 }
 
-//computes all length and slope data for sides and counts unique lengths.
-void measureAllSides(std::vector<Quadrilateral>& quadrilaterals){
-    for(Quadrilateral& quadrilateral: quadrilaterals){
-        measureSides(quadrilateral);
-    }
-}
 void hasVaidInputStream(std::istream& inputStream, std::ofstream& outputStream){
     if(inputStream.fail()){
         outputStream << "error 1" << std::endl;
         outputStream.close();
-        exit(1);
+        exit(0);
     }
 }
 
@@ -256,7 +231,7 @@ void printError(int errorNum, std::ofstream& outputStream ){
     outputStream << "error " << errorNum << std::endl;
     std::cout << "error " << errorNum << std::endl;
     outputStream.close();
-    exit(1);
+    exit(0);
 }
 bool hasSameYVals(double y1, double y2){
     return y1 == y2;
@@ -337,20 +312,6 @@ void getInnerAngles(Quadrilateral& quadrilateral){
     countRightAngles(quadrilateral);
 }
 
-void getInnerAngles(std::vector<Quadrilateral>& quadrilaterals){
-    //check to see if we have all sides
-    for(Quadrilateral& quadrilateral : quadrilaterals){
-        getInnerAngles(quadrilateral);
-    }
-}
-
-void measureQuadrilaterals(std::vector<Quadrilateral>& quadrilaterals){
-    //measure sides
-    measureAllSides(quadrilaterals);
-     //get angles
-    getInnerAngles(quadrilaterals);
-}
-
 void classifyAsSquareOrRectangle(Quadrilateral& quadrilateral){
     if(quadrilateral.uniqueSideLen.size() == 1){
         quadrilateral.type = "square";
@@ -398,20 +359,6 @@ void classifyQuadrilateral(Quadrilateral& quadrilateral){
     }
 }
 
-void classifyQuadrilaterals(std::vector<Quadrilateral>& quadrilaterals){
-    for(Quadrilateral& quadrilateral : quadrilaterals){
-        classifyQuadrilateral(quadrilateral);
-    }
-}
-
-void printToFile(std::ofstream& outputStream, const std::vector<Quadrilateral>& quadrilaterals){
-    for(int i = 0; i < quadrilaterals.size(); i++){
-        //        filestream << "***********************************" << std::endl;
-        outputStream << quadrilaterals[i].type << std::endl;
-    }
-    outputStream.close();
-}
-
 int main(int argc, const char * argv[]) {
     std::fstream inputStream;
     inputStream.open(argv[1]);
@@ -428,15 +375,8 @@ int main(int argc, const char * argv[]) {
         getInnerAngles(quadrilateral);
         classifyQuadrilateral(quadrilateral);
         outputStream << quadrilateral.type << std::endl;
-        //TODO: classify the quadrilateral;
-        //TODO: print the quadrilateral;
         quadrilaterals.push_back(quadrilateral);
     }
     outputStream.close();
-    //TODO: change to measure a single quadrilateral
-    //measureQuadrilaterals(quadrilaterals);
-    
-    //classifyQuadrilaterals(quadrilaterals);
-    //printToFile(outputStream, quadrilaterals);
     return 0;
 }
