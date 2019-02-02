@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "assignment4/main.cpp"
-            timestampString = "570609566.2888"
+            timestampString = "570760897.236027"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "279"
-            endingLineNumber = "279"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
             landmarkName = "readInputAsQuad(std::fstream&amp; inputStream, std::ofstream&amp; outputStream)"
             landmarkType = "9">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "assignment4/main.cpp"
-            timestampString = "570609566.289178"
+            timestampString = "570760897.236452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "readInputAsQuad(std::fstream&amp; inputStream, std::ofstream&amp; outputStream)"
             landmarkType = "9">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "assignment4/main.cpp"
-            timestampString = "570609566.289423"
+            timestampString = "570760897.236842"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "286"
-            endingLineNumber = "286"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "readInputAsQuad(std::fstream&amp; inputStream, std::ofstream&amp; outputStream)"
             landmarkType = "9">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "assignment4/main.cpp"
-            timestampString = "570609566.289659"
+            timestampString = "570760897.237178"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "426"
-            endingLineNumber = "426"
+            startingLineNumber = "373"
+            endingLineNumber = "373"
             landmarkName = "main(int argc, const char * argv[])"
             landmarkType = "9">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "assignment4/main.cpp"
-            timestampString = "570609566.289903"
+            timestampString = "570760897.237411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "readInputAsQuad(std::fstream&amp; inputStream, std::ofstream&amp; outputStream)"
             landmarkType = "9">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "assignment4/main.cpp"
-            timestampString = "570609566.290139"
+            timestampString = "570760897.237626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
             landmarkName = "readInputAsQuad(std::fstream&amp; inputStream, std::ofstream&amp; outputStream)"
             landmarkType = "9">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "assignment4/main.cpp"
-            timestampString = "570609566.290362"
+            timestampString = "570760897.237839"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "297"
-            endingLineNumber = "297"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "readInputAsQuad(std::fstream&amp; inputStream, std::ofstream&amp; outputStream)"
             landmarkType = "9">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "assignment4/main.cpp"
-            timestampString = "570609566.290584"
+            timestampString = "570760897.238049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "hasCoincidingPoints (std::vector&lt;double&gt;&amp; points)"
             landmarkType = "9">
          </BreakpointContent>
@@ -362,7 +362,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "assignment4/main.cpp"
-            timestampString = "570609566.290808"
+            timestampString = "570760897.238265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
@@ -378,7 +378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "assignment4/main.cpp"
-            timestampString = "570609566.29103"
+            timestampString = "570760897.238476"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "assignment4/main.cpp"
-            timestampString = "570609566.291239"
+            timestampString = "570760897.2386791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "readInputAsQuad(std::fstream&amp; inputStream, std::ofstream&amp; outputStream)"
             landmarkType = "9">
          </BreakpointContent>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "assignment4/main.cpp"
-            timestampString = "570609566.291458"
+            timestampString = "570760897.238885"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "lineIntersects(Point&amp; A, Point&amp; B, Point&amp; C, Point&amp; D)"
             landmarkType = "9">
          </BreakpointContent>
@@ -426,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "assignment4/main.cpp"
-            timestampString = "570609566.291786"
+            timestampString = "570760897.239086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "lineIntersects(Point&amp; A, Point&amp; B, Point&amp; C, Point&amp; D)"
             landmarkType = "9">
          </BreakpointContent>
@@ -438,15 +438,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "assignment4/main.cpp"
-            timestampString = "570609566.292128"
+            timestampString = "570760897.23929"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
             landmarkName = "readInputAsQuad(std::fstream&amp; inputStream, std::ofstream&amp; outputStream)"
             landmarkType = "9">
          </BreakpointContent>
@@ -458,12 +458,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "assignment4/main.cpp"
-            timestampString = "570609566.292486"
+            timestampString = "570760897.239496"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "lineIntersects(Point&amp; A, Point&amp; B, Point&amp; C, Point&amp; D)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "assignment4/main.cpp"
+            timestampString = "570760897.2396981"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "inputRangeIsValid(const double&amp; coordinate)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "assignment4/main.cpp"
+            timestampString = "570760897.239908"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "372"
+            endingLineNumber = "372"
+            landmarkName = "main(int argc, const char * argv[])"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "assignment4/main.cpp"
+            timestampString = "570760897.240146"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "main(int argc, const char * argv[])"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

@@ -1,7 +1,7 @@
 puts "Hello world";
-inputFiles = ["input","coincidingInput", "colinearInput", "intersectingInput","badInput"];
-outputFiles = ["output", "coincidingOutput", "colinearOutput", "intersectingOutput", "badOutput"]
-expectedOutputFiles = ["expectedOutput", "expectedCoincidingOutput", "expectedColinearOutput", "expectedIntersectingOutput", "expectedBadOutput"]
+inputFiles = ["input","coincidingInput", "colinearInput", "intersectingInput","badInput", "outBoundsInput"];
+outputFiles = ["output", "coincidingOutput", "colinearOutput", "intersectingOutput", "badOutput", "outOfBoundsOutput"]
+expectedOutputFiles = ["expectedOutput", "expectedCoincidingOutput", "expectedColinearOutput", "expectedIntersectingOutput", "expectedBadOutput", "expectedOutOfBoundsOutput"]
 
 
 prevCoverage = "blanktest"

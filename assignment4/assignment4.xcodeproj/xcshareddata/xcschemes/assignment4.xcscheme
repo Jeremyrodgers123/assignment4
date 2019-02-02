@@ -50,7 +50,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/jeremyrodgers/publicMSDrepo/cs6015/assignment4/assignment4"
+      customWorkingDirectory = "/Users/jeremyrodgers/publicMSDrepo/cs6015"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
@@ -67,11 +67,11 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "intersectingInput.txt"
+            argument = "./inputFiles/outBoundsInput.txt"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "output.txt"
+            argument = "./outputFiles/outOfBoundsOutput.txt"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
