@@ -17,4 +17,5 @@ void testGetPoint();
 void testGetPointWithDistance();
 void testRandomTF();
 void testParallelagram();
+void testTrapizoid();
 #endif /* tests_hpp */

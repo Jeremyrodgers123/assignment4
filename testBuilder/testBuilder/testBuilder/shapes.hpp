@@ -94,4 +94,8 @@ bool randomTrueFalse();
 void printPoints(Quadrilateral quadrilateral);
 
 void calcAllDistance(Quadrilateral& quadrilateral);
+
+Quadrilateral buildTrapezoid();
+
+vector<Point> moveAlongTrapazoidLine(const Point& min, const Point& max, const int& gcd, Quadrilateral& quadrilateral);
 #endif /* shapes_hpp */

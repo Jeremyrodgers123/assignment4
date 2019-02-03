@@ -34,9 +34,10 @@ void makeTests(string fileName){
 }
 
 void unitTestSuite(){
-    testRandomTF();
+    //testRandomTF();
     testRhombus();
     testParallelagram();
+    testTrapizoid();
     //testGetPoint();
   
 }

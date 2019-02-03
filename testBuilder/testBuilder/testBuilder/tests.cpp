@@ -22,6 +22,13 @@ void testParallelagram(){
     outputCoordinates(shape, coordinatesOutStream);
 }
 
+void testTrapizoid(){
+    Quadrilateral shape = createShape(5);
+    std::ofstream coordinatesOutStream;
+    coordinatesOutStream.open("test.txt");
+    outputCoordinates(shape, coordinatesOutStream);
+}
+
 void testGetPoint(){
     getNewPoint(50, 12);
 }
