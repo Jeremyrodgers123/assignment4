@@ -39,13 +39,16 @@ void unitTestSuite(){
     testParallelagram();
     testTrapizoid();
     //testGetPoint();
-  
+    testKite();
+    testGetNextYCoordinate();
+    testGenerateError3();
+    testGenerateError4();
 }
 
 int main(int argc, const char * argv[]) {
     srand(time(0));
-    //makeTests(argv[1]);
-    unitTestSuite();
+    makeTests(argv[1]);
+    //unitTestSuite();
 
     return 0;
 }

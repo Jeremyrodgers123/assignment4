@@ -18,4 +18,8 @@ void testGetPointWithDistance();
 void testRandomTF();
 void testParallelagram();
 void testTrapizoid();
+void testKite();
+void testGetNextYCoordinate();
+void testGenerateError3();
+void testGenerateError4();
 #endif /* tests_hpp */

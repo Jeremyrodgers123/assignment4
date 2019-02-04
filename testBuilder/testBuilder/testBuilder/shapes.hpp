@@ -16,7 +16,7 @@
 #include <cmath>
 #include <set>
 #include <map>
-
+#include <sstream>
 using namespace std;
 
 struct Point{
@@ -98,4 +98,16 @@ void calcAllDistance(Quadrilateral& quadrilateral);
 Quadrilateral buildTrapezoid();
 
 vector<Point> moveAlongTrapazoidLine(const Point& min, const Point& max, const int& gcd, Quadrilateral& quadrilateral);
+
+Quadrilateral buildKite();
+
+Point getMidpoint(Point& point1, Point& point2);
+
+Side findRiseAndRun(Point& point1, Point& point2);
+
+double nextYCoordinateOnLine(Point& point1, Point& point2, int anyX);
+string generateError1();
+string generateError2();
+string generateError3();
+string generateError4();
 #endif /* shapes_hpp */

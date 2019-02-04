@@ -11,6 +11,9 @@
 vector<string> shapeTypes {"quadrilateral", "parallelagram", "rhombus", "square", "rectangle", "trapezoid", "kite"};
 
 bool areEqual(double a, double b){
+    if(a == INFINITY && b == INFINITY){
+        return true;
+    }
     return fabs(a - b) < 0.0000001;
 }
 
@@ -32,14 +35,14 @@ Point getNewPoint(double outsideAngle, double radius){
     return point;
 }
 
-//double findNewY(double distance, int xVal, const Point& b){
-//    double d = pow(distance, 2);
-//    double x = pow( (b.x - xVal) , 2);
-//   // double y = pow( b.y, 2);
-//    double ret = sqrt(d - x);
-//    return ret;
-//}
-
+Point getMidpoint(Point& point1, Point& point2){
+   double x = (point1.x + point2.x)/2;
+   double y = (point1.y +point2.y)/2;
+    Point midpoint;
+    setPoint(midpoint, x, y);
+    cout << "Midpoint " << "( " << x << ", "<< y << " )" << endl;
+    return midpoint;
+}
 
 //counts the number of unique sides in a quadrilateral
 void countUniqueSides(Quadrilateral& quadrilateral){
@@ -56,6 +59,26 @@ int gcd(int a, int b)
     return gcd(b, a % b);
 }
 
+
+Side findRiseAndRun(Point& point1, Point& point2){
+    Side riseNRun;
+    double x = (point1.x + point2.x)/2;
+    double y = (point1.y +point2.y)/2;
+    riseNRun.rise = y;
+    riseNRun.run = x;
+    cout << "Rise and Run " << "(Rise: " << x << ", Run: "<< y << " )" << endl;
+    return riseNRun;
+}
+
+double nextYCoordinateOnLine(Point& point1, Point& point2, int anyX){
+    Side connectingLine = findRiseAndRun(point1, point2);
+    double run = connectingLine.run;
+    //y - point1.y = connectingLine.rise / connectingLine.run (anyX - point1.x);
+    double val =  ((connectingLine.rise * anyX) - (connectingLine.rise * point1.x)
+                + (point1.y * connectingLine.run));
+    double nextY = fmod(val, run);
+    return nextY;//(connectingLine.rise * anyX) % run;
+}
 /**
  calculates the slope of a line given two points
  if a value is divided by 0 the equation returns infinity
@@ -284,7 +307,7 @@ Quadrilateral buildParallelagram(){
         parallelagram.sideD.rise = rise;
         parallelagram.sideD.run = run;
     }
-    
+     parallelagram.type = "parallelagram";
     calcAllDistance(parallelagram);
     calcAllSlopes(parallelagram);
     assert(areEqual(parallelagram.sideA.len, parallelagram.sideC.len));
@@ -293,8 +316,8 @@ Quadrilateral buildParallelagram(){
     assert(areEqual(parallelagram.sideA.run, parallelagram.sideC.run));
     assert(areEqual(parallelagram.sideB.rise, parallelagram.sideD.rise));
     assert(areEqual(parallelagram.sideD.run, parallelagram.sideD.run));
-    double slopeA = (double)parallelagram.sideA.rise/parallelagram.sideA.run;
-    assert(areEqual(slopeA, parallelagram.sideA.slope));
+    //double slopeA = (double)parallelagram.sideA.rise/parallelagram.sideA.run;
+    //assert(areEqual(slopeA, parallelagram.sideA.slope));
     //printPoints(parallelagram);
     return parallelagram;
 }
@@ -353,17 +376,17 @@ Quadrilateral buildTrapezoid(){
             trapezoid.bRight = possibleBottomPoints[randomNum(sizeBottom)];
             printPoints(trapezoid);
             calcAllSlopes(trapezoid);
-            assert(areEqual(trapezoid.sideA.slope, trapezoid.sideC.slope));
+            assert(areEqual(trapezoid.sideA.slope, trapezoid.sideC.slope) );
             
         }
         if(isValid){
-//            setPoint(min, 1, trapezoid.tLeft.y);
-//            setPoint(max, trapezoid.tRight.x, trapezoid.tRight.y);
-//            possibleTopPoints = moveAlongTrapazoidLine(min, max, gCD, trapezoid);
-//            int sizeTop = (int) possibleTopPoints.size() - 1;
-//            if(sizeTop > 0){
-//                trapezoid.bRight = possibleTopPoints[randomNum(sizeTop)];
-//            }
+            setPoint(min, 1, trapezoid.tLeft.y);
+            setPoint(max, trapezoid.tRight.x, trapezoid.tRight.y);
+            possibleTopPoints = moveAlongTrapazoidLine(min, max, gCD, trapezoid);
+            int sizeTop = (int) possibleTopPoints.size() - 1;
+            if(sizeTop > 0){
+                trapezoid.bRight = possibleTopPoints[randomNum(sizeTop)];
+            }
         }
         
     }
@@ -372,13 +395,64 @@ Quadrilateral buildTrapezoid(){
     cout << "Rise: " << trapezoid.sideA.rise << endl;
     cout << "Run: " << trapezoid.sideA.run << endl;
     cout << "Greatest Common Denominator: " << gCD << endl;
-    
+    trapezoid.type = "trapezoid";
     calcAllSlopes(trapezoid);
     assert(areEqual(trapezoid.sideA.slope, trapezoid.sideC.slope));
     cout << "TRAPEZOID" << endl;
     printPoints(trapezoid);
     cout << "*************" << endl;
     return trapezoid;
+}
+
+bool findIntMidpoint(const Side& riseAndRun, double& newX, double& newY){
+    while( !(std::floor(newX) == newX) || !(std::floor(newY) == newY)){
+        newX += riseAndRun.run;
+        newY += riseAndRun.rise;
+        if(newX > 50 || newY > 50){
+            return false;
+        }
+    };
+    return true;
+}
+
+Quadrilateral buildKite(){
+    Quadrilateral kite = buildRhombus();
+    //get midpoint of B and D
+    Point midpoint = getMidpoint(kite.tLeft, kite.bRight);
+    Side riseAndRun = findRiseAndRun(kite.bLeft, midpoint);
+    
+    double newX = midpoint.x + riseAndRun.run;
+    double newY = midpoint.y + riseAndRun.rise;
+    //check if an integer
+    int attempts = 0;
+    
+    while(!findIntMidpoint(riseAndRun, newX, newY)){
+        kite = buildRhombus();
+        Point midpoint = getMidpoint(kite.tLeft, kite.bRight);
+        Side riseAndRun = findRiseAndRun(kite.bLeft, midpoint);
+        newX = midpoint.x + riseAndRun.run;
+        newY = midpoint.y + riseAndRun.rise;
+        attempts++;
+        if (attempts > 10){
+            kite = buildSquare();
+            newX = kite.tRight.x + 1;
+            newY = kite.tRight.y + 1;
+            cout << "Kite cheated" << endl;
+            break;
+        }
+    };
+    kite.type = "kite";
+    kite.tRight.x = newX;
+    kite.tRight.y = newY;
+    //check to see if integer found
+    //if not add again
+    //if over 50, break
+    //if intPoint not found, pick a new paralellagram and try again
+    //try 10 times, if not found pick square
+    assert(areEqual(kite.sideA.len, kite.sideC.len));
+    assert(areEqual(kite.sideB.len, kite.sideD.len));
+     assert(areEqual(kite.sideB.len, kite.sideA.len));
+    return kite;
 }
 
 void outputCoordinates(Quadrilateral quadrilateral, std::ofstream& coordinatesOutStream){
@@ -388,11 +462,171 @@ void outputCoordinates(Quadrilateral quadrilateral, std::ofstream& coordinatesOu
     return;
 };
 
+// if line contains the wrong number of points, invalid characters, coordinates out of the range 0..100, or otherwise fails to describe three points (six integer values)
+string generateError1(){
+     ostringstream sstream;
+    string ret = "";
+    int path = randomNum(2);
+    if(path == 0){
+        sstream << randomNum(0, 100) << " " << //1
+        randomNum(0, 100) << " " <<//2
+        randomNum(0, 100) << " " <<//3
+        randomNum(0, 100) << " " <<//4
+        randomNum(0, 100) << " " <<//5
+        randomNum(0, 100) << " " <<//6
+        randomNum(0, 100) << "\n";//7
+        ret = sstream.str();
+        return ret;
+    }else if(path == 1){
+        for( int i = 0; i < 6; i++){ //6 is the number of valid points
+            int r = rand() % 26;   // generate a random number
+            char c = 'a' + r;
+            sstream << c;
+            if(i != 5){
+                sstream << " ";
+            }else{
+                sstream << "\n";
+            }
+        }
+        return ret;
+    }else if(path == 2){
+        for( int i = 0; i < 6; i++){ //6 is the number of valid points
+            int r = randomNum(100, 200);   // generate a random number
+            sstream << r;
+            if(i != 5){
+                sstream << " ";
+            }else{
+                sstream << "\n";
+            }
+        }
+        ret = sstream.str();
+        return ret;
+    }else{
+        cout << "problem generating error 1 in generateError1 function";
+        cout << "path number: " << path << endl;
+        assert(false);
+    }
+}
+
+string generateError2(){
+    string ret = "";
+    int point1 = randomNum(0, 100);
+    int point2 = randomNum(0, 100);
+    for( int i = 0; i < 3; i++){ //6 is the number of valid points
+           // generate a random number
+        ret += to_string(point1);
+        ret += " ";
+        ret += to_string(point2);
+        if(i != 5){
+            ret += " ";
+        }
+    }
+    return ret;
+}
+
+string generateError3(){
+    ostringstream sstream;
+    string ret;
+    Point point1, point2, point3;
+    setPoint(point1, randomNum(50, 100),randomNum(0, 50));
+    setPoint(point2, randomNum(0, 50),randomNum(50, 100));
+    setPoint(point3, randomNum(50, 100),randomNum(50, 100));
+    sstream << point1.x << " " << point1.y << " " << point2.x << " " << point2.y << " " << point3.x << " " << point3.y << endl;
+    ret = sstream.str();
+    return ret;
+}
+
+string generateError4(){
+    ostringstream sstream;
+    string ret;
+    Point point1, point2, point3;
+    int x = randomNum(0, 25);
+    int y = randomNum(0, 25);
+    setPoint(point1, x,y);
+    setPoint(point2, x * 2,y * 2);
+    setPoint(point3,x * 3,y * 3);
+    sstream << point1.x << " " << point1.y << " " << point2.x << " " << point2.y << " " << point3.x << " " << point3.y << endl;
+    ret = sstream.str();
+    return ret;
+}
+
+string createError(const int& shapeNum ){
+    string ret = "";
+    switch (shapeNum){
+        case 7:
+            std::cout << "error 1" <<endl;
+            ret = generateError1();
+            break;
+        case 8:
+            std::cout << "error 2" <<endl;
+            ret = generateError2();
+            break;              //execution of subsequent statements is terminated
+        case 9:
+            std::cout << "error 3" <<endl;
+            ret = generateError3();
+            break;
+        case 10:
+            ret = generateError4();
+            std::cout << "error 4" <<endl;
+            break;
+        default:
+            cout << "could not properly classify shape Type";
+            cout << "shape number: " << shapeNum << endl;
+            assert(false);
+    }
+    return ret;
+}
+
+Quadrilateral buildQuadrilateral(){
+    Point bleft, tRight, tLeft;
+    setPoint(bleft, randomNum(50, 100),randomNum(0, 50));
+    setPoint(tRight, randomNum(50, 100),randomNum(50, 100));
+    setPoint(tLeft, randomNum(0, 50),randomNum(50, 100));
+   
+    
+    Quadrilateral quadrilateral;
+    quadrilateral.bRight = bleft;
+    quadrilateral.tRight = tRight;
+    quadrilateral.tLeft = tLeft;
+  
+    calcAllSlopes(quadrilateral);
+    calcAllDistance(quadrilateral);
+    //check that slope of A and C !=
+    bool isValid = false;
+    while(!isValid){
+        isValid = true;
+        if(areEqual(quadrilateral.sideA.len, quadrilateral.sideC.len)){
+            setPoint(bleft, randomNum(0, 50),randomNum(50, 100));
+            quadrilateral.bLeft = bleft;
+            isValid = false;
+        }
+        if(areEqual(quadrilateral.sideB.len, quadrilateral.sideD.len)){
+            setPoint(tRight, randomNum(0, 50),randomNum(50, 100));
+            quadrilateral.tRight = tRight;
+            isValid = false;
+        }
+        if(areEqual(quadrilateral.sideA.slope, quadrilateral.sideC.slope)){
+            setPoint(bleft, randomNum(0, 50),randomNum(50, 100));
+            quadrilateral.bLeft = bleft;
+            isValid = false;
+        }
+        if(areEqual(quadrilateral.sideB.slope, quadrilateral.sideD.slope)){
+            setPoint(tRight, randomNum(0, 50),randomNum(50, 100));
+            quadrilateral.tRight = tRight;
+            isValid = false;
+        }
+    }
+    quadrilateral.type = "quadrilateral";
+    return quadrilateral;
+    //check that
+}
+
 Quadrilateral createShape(const int& shapeNum ){
     Quadrilateral quadrilateral;
     switch (shapeNum){
         case 0:
             cout << "quadrilateral" <<endl;
+            quadrilateral = buildTrapezoid();
             break;
         case 1 :
             std::cout << "parallelagram" <<endl;
@@ -416,18 +650,7 @@ Quadrilateral createShape(const int& shapeNum ){
             break;
         case 6:
             std::cout << "kite" <<endl;
-            break;
-        case 7:
-            std::cout << "error 1" <<endl;
-            break;
-        case 8:
-            std::cout << "error 2" <<endl;
-            break;              //execution of subsequent statements is terminated
-        case 9:
-            std::cout << "error 3" <<endl;
-            break;
-        case 10:
-            std::cout << "error 4" <<endl;
+            quadrilateral = buildKite();
             break;
         default:
             cout << "could not properly classify shape Type";
@@ -438,32 +661,39 @@ Quadrilateral createShape(const int& shapeNum ){
 }
 
 void pickRandomOutput(vector<string>& possibleOutShapes, ofstream& expectedOutStream, std::ofstream& coordinatesOutStream){
-    int size = (int) shapeTypes.size() -1;
-    int shapeNum = randomNum(size); //Throw away first random number as it always seems to be 0
-    shapeNum = randomNum(size);
-    string firstShape = shapeTypes[ shapeNum ];
-    possibleOutShapes.push_back( firstShape );
-    expectedOutStream << firstShape << endl;
-    cout << firstShape <<": "<< shapeNum << endl;
-    createShape(shapeNum);
+    int shapeCount = (int) shapeTypes.size() -1;
+    int shapeNum = randomNum(shapeCount); //Throw away first random number as it always seems to be 0
+    shapeNum = randomNum(shapeCount);
+    string firstShapeType = shapeTypes[ shapeNum ];
+    possibleOutShapes.push_back( firstShapeType );
+    expectedOutStream << firstShapeType << endl;
+    cout << firstShapeType <<": "<< shapeNum << endl;
+    Quadrilateral quadrilateral = createShape(shapeNum);
+    outputCoordinates(quadrilateral, coordinatesOutStream);
     initErrorTypes(shapeTypes);
-    size = (int) shapeTypes.size() - 1;
+    int totalShapeTypes = (int) shapeTypes.size() - 1;
     
     for (int i = 0 ; i < 100 ; i++){
-        shapeNum = randomNum(size);
-        string shape = shapeTypes[ shapeNum ];
-        possibleOutShapes.push_back( shape );
-        expectedOutStream << shape << endl;
-        //cout << shape  <<": "<< shapeNum << endl;
-        
-        //create Shape
-        Quadrilateral quadrilateral = createShape(shapeNum);
-        if(quadrilateral.type != ""){
+        shapeNum = randomNum(totalShapeTypes);
+        string shapeType = shapeTypes[ shapeNum ];
+        possibleOutShapes.push_back( shapeType );
+        expectedOutStream << shapeType << endl;
+//
+//        cout << endl;
+//        cout << endl;
+//        cout << endl;
+//        cout << "shapeNum: " << shapeNum << endl;
+//        cout << "totalShapeTypes: " << totalShapeTypes - 4  << endl;
+        if( !(shapeNum > ( totalShapeTypes - 4 ) ) ){
+            quadrilateral = createShape(shapeNum);
             outputCoordinates(quadrilateral, coordinatesOutStream);
+             //print coordinates
+        }else{
+            string errorPoints = createError(shapeNum);
+            coordinatesOutStream << errorPoints << "error";
+             break;
         }
-        if( shapeNum > ( size - 4 ) ){
-            break;
-        }
+
     }
 }
 

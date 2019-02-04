@@ -29,6 +29,20 @@ void testTrapizoid(){
     outputCoordinates(shape, coordinatesOutStream);
 }
 
+void testKite(){
+    Quadrilateral shape = createShape(6);
+    std::ofstream coordinatesOutStream;
+    coordinatesOutStream.open("test.txt");
+    outputCoordinates(shape, coordinatesOutStream);
+}
+//TODO: DELETE
+void testGetNextYCoordinate(){
+    Quadrilateral kite = buildKite();
+    //get midpoint of B and D
+    //Point midpoint = getMidpoint(kite.tLeft, kite.bRight);
+    printPoints(kite);
+}
+
 void testGetPoint(){
     getNewPoint(50, 12);
 }
@@ -38,4 +52,12 @@ void testRandomTF(){
         int val = randomTrueFalse();
         cout << val << endl;
     }
+}
+
+void testGenerateError3(){
+    generateError3();
+}
+
+void testGenerateError4(){
+    generateError4();
 }

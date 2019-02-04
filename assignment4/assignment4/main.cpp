@@ -285,6 +285,7 @@ Quadrilateral readInputAsQuad(std::fstream& inputStream, std::ofstream& outputSt
         printError(4, outputStream);
     };
     
+    //ToDO: fix broken kite scenario
     if(lineIntersects(point0, point1, point2, point3 ) || lineIntersects(point1, point2, point3, point0)){
         printError(4, outputStream);
     };
