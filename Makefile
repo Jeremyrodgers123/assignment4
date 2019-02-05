@@ -12,8 +12,13 @@ test :
 	ruby ./test.rb
 
 itwork:  
-	clang++ -std=c++11 -fprofile-instr-generate -fcoverage-mapping main.cpp -o main
+	 -fprofile-instr-generate -fcoverage-mapping main.cpp -o main
 	-LLVM_PROFILE_FILE="main.profraw" ./main ./inputFiles/input.txt ./outputFiles/output.txt
 	xcrun llvm-profdata merge -sparse main.profraw -o main.profdata
 	xcrun llvm-cov show ./main -instr-profile=main.profdata
 
+fuzz: 
+	clang++ -std=c++11 -O1 -g -fsanitize=address -fprofile-instr-generate -fcoverage-mapping main.cpp -o main
+	clang++ -std=c++11 testGenerator.cpp shapes.cpp -o testGenerator
+	touch blanktest.profdata
+	ruby randomTesting.rb

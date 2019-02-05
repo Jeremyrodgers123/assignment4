@@ -1,4 +1,3 @@
-puts "Hello world";
 inputFiles = ["input","coincidingInput", "colinearInput", "intersectingInput","badInput", "outBoundsInput"];
 outputFiles = ["output", "coincidingOutput", "colinearOutput", "intersectingOutput", "badOutput", "outOfBoundsOutput"]
 expectedOutputFiles = ["expectedOutput", "expectedCoincidingOutput", "expectedColinearOutput", "expectedIntersectingOutput", "expectedBadOutput", "expectedOutOfBoundsOutput"]
@@ -16,3 +15,6 @@ for i in 0..inputFiles.length-1 do
 end
 system("xcrun llvm-profdata merge -sparse #{prevCoverage}.profdata -o main.profdata");
 system("xcrun llvm-cov show ./main -instr-profile=main.profdata main.cpp");
+
+#make fuzzer -builds /tester
+

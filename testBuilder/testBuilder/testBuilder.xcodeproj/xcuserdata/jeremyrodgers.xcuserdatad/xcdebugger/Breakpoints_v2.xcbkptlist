@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/main.cpp"
-            timestampString = "571007784.526494"
+            timestampString = "571013011.2175649"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "main(int argc, const char * argv[])"
             landmarkType = "9">
          </BreakpointContent>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.526558"
+            timestampString = "571023593.6862791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
-            landmarkName = "buildRhombus()"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
+            landmarkName = "checkValidParamsCreated(const Point&amp; point1, const Point&amp; point2)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.526938"
+            timestampString = "571023593.686672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "getNewPoint(double outsideAngle, double radius)"
             landmarkType = "9">
          </BreakpointContent>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.527212"
+            timestampString = "571023593.6869611"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
-            landmarkName = "buildRhombus()"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
+            landmarkName = "checkValidParamsCreated(const Point&amp; point1, const Point&amp; point2)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/tests.cpp"
-            timestampString = "571007784.5274661"
+            timestampString = "571013011.218169"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/tests.cpp"
-            timestampString = "571007784.5275199"
+            timestampString = "571013011.218217"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
@@ -106,12 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.527565"
+            timestampString = "571023593.687306"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
-            landmarkName = "buildParallelagram()"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "buildRhombus()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -122,12 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.527815"
+            timestampString = "571023593.687557"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
-            landmarkName = "buildParallelagram()"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
+            landmarkName = "buildRhombus()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,12 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.528082"
+            timestampString = "571023593.68776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
-            landmarkName = "buildParallelagram()"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
+            landmarkName = "changeRiseAndRun(int&amp; rise, int&amp; run)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/tests.cpp"
-            timestampString = "571007784.528439"
+            timestampString = "571013011.218412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -170,28 +170,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.528494"
+            timestampString = "571023593.687974"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "404"
-            endingLineNumber = "404"
-            landmarkName = "buildTrapezoid()"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.528796"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "340"
-            endingLineNumber = "340"
-            landmarkName = "moveAlongTrapazoidLine(const Point&amp; min, const Point&amp; max, const int&amp; gcd, Quadrilateral&amp; quadrilateral)"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
+            landmarkName = "buildParallelagram()"
             landmarkType = "9">
             <Locations>
                <Location
@@ -234,12 +218,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.5290461"
+            timestampString = "571023593.68819"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
-            landmarkName = "moveAlongTrapazoidLine(const Point&amp; min, const Point&amp; max, const int&amp; gcd, Quadrilateral&amp; quadrilateral)"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
+            landmarkName = "changeRiseAndRun(int&amp; rise, int&amp; run)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -250,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.529296"
+            timestampString = "571023593.688385"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
+            startingLineNumber = "368"
+            endingLineNumber = "368"
             landmarkName = "buildParallelagram()"
             landmarkType = "9">
          </BreakpointContent>
@@ -266,12 +250,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.529566"
+            timestampString = "571023593.68859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "367"
-            endingLineNumber = "367"
-            landmarkName = "buildTrapezoid()"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "buildParallelagram()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -282,28 +266,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.52997"
+            timestampString = "571023593.688791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "370"
-            endingLineNumber = "370"
-            landmarkName = "buildTrapezoid()"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.530398"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "368"
-            endingLineNumber = "368"
-            landmarkName = "buildTrapezoid()"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
+            landmarkName = "buildParallelagram()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -314,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/tests.cpp"
-            timestampString = "571007784.530827"
+            timestampString = "571013011.218805"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -330,12 +298,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.530911"
+            timestampString = "571023593.689019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "421"
-            endingLineNumber = "421"
-            landmarkName = "buildKite()"
+            startingLineNumber = "420"
+            endingLineNumber = "420"
+            landmarkName = "buildTrapezoid()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -346,12 +314,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.531427"
+            timestampString = "571023593.689222"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "422"
-            endingLineNumber = "422"
-            landmarkName = "buildKite()"
+            startingLineNumber = "421"
+            endingLineNumber = "421"
+            landmarkName = "buildTrapezoid()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -362,13 +330,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.531984"
+            timestampString = "571023593.6894161"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "nextYCoordinateOnLine(Point&amp; point1, Point&amp; point2, int anyX)"
-            landmarkType = "9">
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -378,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/tests.cpp"
-            timestampString = "571007784.532256"
+            timestampString = "571013011.219002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
@@ -394,12 +362,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.532306"
+            timestampString = "571023593.689626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "430"
-            endingLineNumber = "430"
-            landmarkName = "buildKite()"
+            startingLineNumber = "429"
+            endingLineNumber = "429"
+            landmarkName = "buildTrapezoid()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -410,12 +378,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.532657"
+            timestampString = "571023593.689824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "455"
-            endingLineNumber = "455"
-            landmarkName = "buildKite()"
+            startingLineNumber = "457"
+            endingLineNumber = "457"
+            landmarkName = "findIntMidpoint(const Side&amp; riseAndRun, double&amp; newX, double&amp; newY)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -426,12 +394,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.5330451"
+            timestampString = "571023593.690019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "424"
-            endingLineNumber = "424"
-            landmarkName = "buildKite()"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
+            landmarkName = "buildTrapezoid()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -442,12 +410,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/shapes.cpp"
-            timestampString = "571007784.53343"
+            timestampString = "571023593.690335"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "444"
-            endingLineNumber = "444"
-            landmarkName = "buildKite()"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
+            landmarkName = "buildTrapezoid()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -458,7 +426,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/tests.cpp"
-            timestampString = "571007784.5338089"
+            timestampString = "571013011.219311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
@@ -474,12 +442,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testBuilder/tests.cpp"
-            timestampString = "571007784.533878"
+            timestampString = "571013011.219348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
             endingLineNumber = "62"
             landmarkName = "testGenerateError4()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "testBuilder/shapes.cpp"
+            timestampString = "571023593.690648"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "679"
+            endingLineNumber = "679"
+            landmarkName = "buildQuadrilateral()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "testBuilder/shapes.cpp"
+            timestampString = "571025456.187611"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "620"
+            endingLineNumber = "620"
+            landmarkName = "createError(const int&amp; shapeNum )"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "testBuilder/shapes.cpp"
+            timestampString = "571025473.397325"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "609"
+            endingLineNumber = "609"
+            landmarkName = "generateError4()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

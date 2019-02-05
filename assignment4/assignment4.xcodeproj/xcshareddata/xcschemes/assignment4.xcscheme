@@ -67,11 +67,11 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "testKite.txt"
+            argument = "./testGeneratedInput/coordinates8.txt"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "testKiteOutput.txt"
+            argument = "./outputFiles/output8.txt"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
