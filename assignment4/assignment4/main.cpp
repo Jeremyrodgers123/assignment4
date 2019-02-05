@@ -106,8 +106,13 @@ Point findMin(std::vector<Point> list){
     return min;
 }
 
-bool lineIntersects(Point& A, Point& B, Point& C, Point& D)
+//WARNING: does not handle convave lines
+bool lineIntersects(Point& A, Point& B, Point& C, Point& D, Point& intersection)
 {
+//    std::cout << "A: " << A.x << " " << A.y << std::endl;
+//    std::cout << "B: " << B.x << " " << B.y << std::endl;
+//    std::cout << "C: " << C.x << " " << C.y << std::endl;
+//    std::cout << "D: " << D.x << " " << D.y << std::endl;
     // Line AB represented as a1x + b1y = c1
     double a1 = B.y - A.y;
     double b1 = A.x - B.x;
@@ -129,14 +134,22 @@ bool lineIntersects(Point& A, Point& B, Point& C, Point& D)
     {
         double x = ( b2 * c1 - b1 * c2 )/determinant;
         double y = (a1 * c2 - a2 * c1 )/determinant;
+//        std::cout << std::endl;
+//        std::cout << "x: " << x << std::endl;
+//        std::cout << "y: " << y << std::endl;
         std::vector<Point> points = std::vector<Point> { A ,B ,C, D};
         Point max = findMax(points);
         Point min = findMin(points);
-        Point intersection;
         intersection.x = x;
         intersection.y = y;
-        
+//        std::cout << "intersection x: " << intersection.x << std::endl;
+//        std::cout << "intersection y: " << intersection.y << std::endl;
+//        std::cout << "max x & y: " << max.x << ", " << max.y << std::endl;
+//        std::cout << "min x & y: " << min.x << ", " << min.y << std::endl;
+//        std::cout << std::endl;
         if(intersection.x < max.x && intersection.x > min.x && intersection.y < max.y && intersection.y > min.y){
+            //if A - B max < C-D min continue
+            //if
             return true;
         }
         return false;
@@ -287,9 +300,23 @@ Quadrilateral readInputAsQuad(std::fstream& inputStream, std::ofstream& outputSt
         printError(4, outputStream);
     };
     
-    if(lineIntersects(point0, point1, point2, point3 ) || lineIntersects(point1, point2, point3, point0)){
-        printError(3, outputStream);
-    };
+    Point intersection;
+    if(lineIntersects(point0, point1, point2, point3, intersection)) {
+        std::cout << "error on side A or C" << std::endl;
+        //handles concave line
+        if( !(point1.y < intersection.y) ){
+          printError(3, outputStream);
+        }
+        
+    }
+  
+   if(lineIntersects(point1, point2, point3, point0, intersection)) {
+       std::cout << "error on side B or D" << std::endl;
+       printError(3, outputStream);
+    }
+//    if(lineIntersects(point0, point1, point2, point3 ) || lineIntersects(point1, point2, point3, point0)){
+//        printError(3, outputStream);
+//    };
     
     Quadrilateral quadrilateral;
     quadrilateral.bRight = point1;

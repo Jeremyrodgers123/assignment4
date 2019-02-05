@@ -36,6 +36,13 @@ Point getNewPoint(double outsideAngle, double radius){
     return point;
 }
 
+double isColinear(Point point0, Point point1, Point point2){
+    // equation for area of  a triangle boorrowed from http://xoax.net/cpp/ref/cpp_examples/incl/area_three_point_triangle/
+    
+    double area = ((point1.x - point0.x)*(point2.y - point0.y) - (point2.x - point0.x)*(point1.y - point0.y))/2.0;
+    return (areEqual(area, 0)) ? true : false;
+}
+
 vector<double> convertToDoubleVector(Quadrilateral quadrilateral){
         vector<double> points = {quadrilateral.bLeft.x, quadrilateral.bLeft.y, quadrilateral.bRight.x, quadrilateral.bRight.y, quadrilateral.tRight.x, quadrilateral.tRight.y, quadrilateral.tLeft.x, quadrilateral.tLeft.y};
     return points;
@@ -270,6 +277,10 @@ Quadrilateral buildRhombus(){
         if(bottomValid && topValid){
             isValid = true;
         }
+        //if it's a square, regenerate
+        if ( rhombus.bRight.x == 0 && rhombus.tLeft.y == 0 ){
+            isValid = false;
+        }
         vector<double> points = convertToDoubleVector(rhombus);
         if(hasCoincidingPoints(points)){
             isValid = false;
@@ -457,6 +468,13 @@ bool findIntMidpoint(const Side& riseAndRun, double& newX, double& newY){
     return true;
 }
 
+bool hasColinearPoints(Quadrilateral &quadrilateral){
+    if(isColinear(quadrilateral.bLeft, quadrilateral.bRight, quadrilateral.tLeft) || isColinear(quadrilateral.bRight, quadrilateral.tRight, quadrilateral.tLeft)){
+        return true;
+    };
+    return false;
+}
+
 Quadrilateral buildKite(){
     Quadrilateral kite = buildRhombus();
     //get midpoint of B and D
@@ -488,8 +506,13 @@ Quadrilateral buildKite(){
         if(hasCoincidingPoints(points)){
             continue;
         };
+        
+        
         if(findIntMidpoint(riseAndRun, newX, newY)){
             isValid = true;
+        }
+        if(hasColinearPoints(kite)){
+            isValid = false;
         }
     };
     kite.type = "kite";

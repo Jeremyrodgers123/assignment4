@@ -114,4 +114,6 @@ string generateError4();
 bool hasSameYVals(double y1, double y2);
 bool hasCoincidingPoints (std::vector<double>& points);
 vector<double> convertToDoubleVector(Quadrilateral quadrilateral);
+double isColinear(Point point0, Point point1, Point point2);
+
 #endif /* shapes_hpp */
