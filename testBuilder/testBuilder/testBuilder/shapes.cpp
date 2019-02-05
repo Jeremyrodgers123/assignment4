@@ -666,13 +666,13 @@ string createError(const int& shapeNum ){
 }
 
 Quadrilateral buildQuadrilateral(){
-    Point bleft, tRight, tLeft;
-    setPoint(bleft, randomNum(50, 100),randomNum(0, 50));
+    Point bRight, tRight, tLeft;
+    setPoint(bRight, randomNum(50, 100),randomNum(0, 50));
     setPoint(tRight, randomNum(50, 100),randomNum(50, 100));
     setPoint(tLeft, randomNum(0, 50),randomNum(50, 100));
    
     Quadrilateral quadrilateral;
-    quadrilateral.bRight = bleft;
+    quadrilateral.bRight = bRight;
     quadrilateral.tRight = tRight;
     quadrilateral.tLeft = tLeft;
     vector<double> points = convertToDoubleVector(quadrilateral);
@@ -681,9 +681,11 @@ Quadrilateral buildQuadrilateral(){
     //check that slope of A and C !=
     bool isValid = false;
     while(!isValid){
+        cout << "quadrilateral while loop" << endl;
         isValid = true;
         if(hasCoincidingPoints(points)){
-            setPoint(bleft, randomNum(50, 100),randomNum(0, 50));
+             cout << "has coinciding points" << endl;
+            setPoint(bRight, randomNum(50, 100),randomNum(0, 50));
             setPoint(tRight, randomNum(50, 100),randomNum(50, 100));
             setPoint(tLeft, randomNum(0, 50),randomNum(50, 100));
             points = convertToDoubleVector(quadrilateral);
@@ -692,25 +694,33 @@ Quadrilateral buildQuadrilateral(){
         }
         
         if(areEqual(quadrilateral.sideA.len, quadrilateral.sideC.len)){
-            setPoint(bleft, randomNum(0, 50),randomNum(50, 100));
-            quadrilateral.bLeft = bleft;
+            cout << "has A and C are equal" << endl;
+            setPoint(bRight, randomNum(0, 50),randomNum(50, 100));
+            quadrilateral.bRight = bRight;
             isValid = false;
         }
         if(areEqual(quadrilateral.sideB.len, quadrilateral.sideD.len)){
+             cout << "has B and D are equal" << endl;
             setPoint(tRight, randomNum(0, 50),randomNum(50, 100));
+            setPoint(tLeft, randomNum(0, 50),randomNum(50, 100));
             quadrilateral.tRight = tRight;
+            quadrilateral.tLeft = tLeft;
             isValid = false;
         }
         if(areEqual(quadrilateral.sideA.slope, quadrilateral.sideC.slope)){
-            setPoint(bleft, randomNum(0, 50),randomNum(50, 100));
-            quadrilateral.bLeft = bleft;
+            cout << "slope A and C are equal" << endl;
+            setPoint(bRight, randomNum(0, 50),randomNum(50, 100));
+            quadrilateral.bRight = bRight;
             isValid = false;
         }
         if(areEqual(quadrilateral.sideB.slope, quadrilateral.sideD.slope)){
+             cout << "slope B and D are equal" << endl;
             setPoint(tRight, randomNum(0, 50),randomNum(50, 100));
             quadrilateral.tRight = tRight;
             isValid = false;
         }
+        calcAllSlopes(quadrilateral);
+        calcAllDistance(quadrilateral);
     }
     quadrilateral.type = "quadrilateral";
     return quadrilateral;
@@ -718,28 +728,35 @@ Quadrilateral buildQuadrilateral(){
 }
 
 Quadrilateral createShape(const int& shapeNum ){
+    cout << "made it to create shape" <<endl;
     Quadrilateral quadrilateral;
     switch (shapeNum){
         case 0:
+            cout << "made it to Quad" <<endl;
             quadrilateral = buildQuadrilateral();
             break;
         case 1 :
+            cout << "made it to Parallelagram" <<endl;
             quadrilateral = buildParallelagram();
             break;
         case 2:
+            cout << "made it to buildRhombus" <<endl;
              quadrilateral = buildRhombus();
             break;
         case 3:
+            cout << "made it to buildSquare" <<endl;
             quadrilateral = buildSquare();
             break;
         case 4:
+            cout << "made it to buildRectangle" <<endl;
             quadrilateral = buildRectangle();
             break;              //execution of subsequent statements is terminated
         case 5:
+             cout << "made it to buildTrapezoid" <<endl;
              quadrilateral = buildTrapezoid();
             break;
         case 6:
-            //std::cout << "kite" <<endl;
+            cout << "made it to buildKite" <<endl;
             quadrilateral = buildKite();
             break;
         default:

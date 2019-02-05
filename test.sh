@@ -10,7 +10,10 @@ then
 echo "PASS"
 elif [ $val -eq 1 ]
 then
+echo "*********"
 echo "FAIL"
+echo $3
+echo "*********"
 exit 1
 else
 echo "ERROR"
@@ -18,4 +21,4 @@ exit 1
 fi
 }
 
-compareFiles $1 $2
+compareFiles $1 $2 $3
