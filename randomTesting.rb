@@ -2,17 +2,14 @@
 #label the output
 prevCoverage = "blanktest"
 for i in 0..1000 do
-    puts"start test #{i}"
     system("./testGenerator ./testGeneratedInput/coordinates#{i}.txt ./testExpectedOut/coordinates#{i}Out.txt");
-    puts "test generated"
     system( "./main ./testGeneratedInput/coordinates#{i}.txt ./outputFiles/output#{i}.txt");
     system("xcrun llvm-profdata merge -sparse #{prevCoverage}.profdata default.profraw -o #{i}.profdata");
     system( "./test.sh ./testExpectedOut/coordinates#{i}Out.txt ./outputFiles/output#{i}.txt #{i}")
-    puts ""
+    # puts ""
     system("rm #{prevCoverage}.profdata")
-     puts ""
+    #puts ""
     prevCoverage = "#{i}"
-    puts"end test #{i}"
 end
 
 system("xcrun llvm-profdata merge -sparse #{prevCoverage}.profdata -o main.profdata");

@@ -38,8 +38,8 @@ Point getNewPoint(double outsideAngle, double radius){
 
 double isColinear(Point point0, Point point1, Point point2){
     // equation for area of  a triangle boorrowed from http://xoax.net/cpp/ref/cpp_examples/incl/area_three_point_triangle/
-    
     double area = ((point1.x - point0.x)*(point2.y - point0.y) - (point2.x - point0.x)*(point1.y - point0.y))/2.0;
+    //cout << "area: " << area << endl;
     return (areEqual(area, 0)) ? true : false;
 }
 
@@ -241,6 +241,13 @@ Quadrilateral buildRectangle(){
     return rectangle;
 }
 
+bool hasColinearPoints(Quadrilateral &quadrilateral){
+    if(isColinear(quadrilateral.bLeft, quadrilateral.bRight, quadrilateral.tLeft) || isColinear(quadrilateral.bRight, quadrilateral.tRight, quadrilateral.tLeft)){
+        return true;
+    };
+    return false;
+}
+
 bool checkValidParamsCreated(const Point& point1, const Point& point2){
     int min = 0;
     int max = 50;
@@ -278,13 +285,16 @@ Quadrilateral buildRhombus(){
             isValid = true;
         }
         //if it's a square, regenerate
-        if ( rhombus.bRight.x == 0 && rhombus.tLeft.y == 0 ){
+        if ( rhombus.bRight.y == 0 && rhombus.tLeft.x == 0 ){
             isValid = false;
         }
         vector<double> points = convertToDoubleVector(rhombus);
         if(hasCoincidingPoints(points)){
             isValid = false;
         }
+        if(hasColinearPoints(rhombus)){
+            isValid = false;
+        };
     }
     
     double SideA = calcDistance(rhombus.bLeft, rhombus.bRight);
@@ -336,17 +346,25 @@ Quadrilateral buildParallelagram(){
             setPoint(point2, parallelagram.bLeft.x + run, parallelagram.bLeft.y + rise);
             isValid = checkValidParamsCreated(point1, point2);
             vector<double> points = convertToDoubleVector(parallelagram);
+          
+            parallelagram.tRight = point1;
+            parallelagram.bRight = point2;
+            calcAllDistance(parallelagram);
             if(hasCoincidingPoints(points)){
                 isValid = false;
             }
+            if(areEqual(parallelagram.sideA.len, parallelagram.sideB.len) && areEqual(parallelagram.sideC.len, parallelagram.sideD.len)){
+                isValid = false;
+//                cout  << "Side A: " << parallelagram.sideA.len << endl;
+//                 cout  << "Side B: " << parallelagram.sideB.len << endl;
+//                 cout  << "Side C: " << parallelagram.sideC.len << endl;
+//                 cout  << "Side D: " << parallelagram.sideD.len << endl;
+            }
         }
-        parallelagram.tRight = point1;
-        parallelagram.bRight = point2;
         parallelagram.sideA.rise = rise;
         parallelagram.sideA.run = run;
         parallelagram.sideC.rise = rise;
         parallelagram.sideC.run = run;
-        
     }else{
         //changing vertical points TL and TR
         bool isValid = false;
@@ -359,12 +377,23 @@ Quadrilateral buildParallelagram(){
             setPoint(point2, parallelagram.bRight.x + run, parallelagram.bRight.y + rise);
             isValid = checkValidParamsCreated(point1, point2);
             vector<double> points = convertToDoubleVector(parallelagram);
+            parallelagram.tLeft = point1;
+            parallelagram.tRight = point2;
+            calcAllDistance(parallelagram);
             if(hasCoincidingPoints(points)){
                 isValid = false;
             }
+            if(areEqual(parallelagram.sideA.len, parallelagram.sideB.len) && areEqual(parallelagram.sideC.len, parallelagram.sideD.len)){
+                isValid = false;
+               
+            }
         }
-        parallelagram.tLeft = point1;
-        parallelagram.tRight = point2;
+//        cout  << "Side A: " << parallelagram.sideA.len << endl;
+//        cout  << "Side B: " << parallelagram.sideB.len << endl;
+//        cout  << "Side C: " << parallelagram.sideC.len << endl;
+//        cout  << "Side D: " << parallelagram.sideD.len << endl;
+//        parallelagram.tLeft = point1;
+//        parallelagram.tRight = point2;
         parallelagram.sideB.rise = rise;
         parallelagram.sideB.run = run;
         parallelagram.sideD.rise = rise;
@@ -468,13 +497,6 @@ bool findIntMidpoint(const Side& riseAndRun, double& newX, double& newY){
     return true;
 }
 
-bool hasColinearPoints(Quadrilateral &quadrilateral){
-    if(isColinear(quadrilateral.bLeft, quadrilateral.bRight, quadrilateral.tLeft) || isColinear(quadrilateral.bRight, quadrilateral.tRight, quadrilateral.tLeft)){
-        return true;
-    };
-    return false;
-}
-
 Quadrilateral buildKite(){
     Quadrilateral kite = buildRhombus();
     //get midpoint of B and D
@@ -503,26 +525,19 @@ Quadrilateral buildKite(){
             isValid = true;
             break;
         }
-        if(hasCoincidingPoints(points)){
-            continue;
-        };
-        
-        
         if(findIntMidpoint(riseAndRun, newX, newY)){
             isValid = true;
         }
+        if(hasCoincidingPoints(points)){
+            isValid = false;
+        };
         if(hasColinearPoints(kite)){
             isValid = false;
-        }
+        };
     };
     kite.type = "kite";
     kite.tRight.x = newX;
     kite.tRight.y = newY;
-    //check to see if integer found
-    //if not add again
-    //if over 50, break
-    //if intPoint not found, pick a new paralellagram and try again
-    //try 10 times, if not found pick square
     calcAllDistance(kite);
      if(!areEqual(kite.sideA.len, kite.sideD.len)){
          assert(areEqual(kite.sideA.len, kite.sideD.len));
@@ -533,7 +548,6 @@ Quadrilateral buildKite(){
         assert(areEqual(kite.sideB.len, kite.sideD.len));
     }
     assert(!areEqual(kite.sideB.len, kite.sideA.len));
-    cout << "about to leave kite" <<endl;
     return kite;
 }
 
@@ -681,10 +695,8 @@ Quadrilateral buildQuadrilateral(){
     //check that slope of A and C !=
     bool isValid = false;
     while(!isValid){
-        cout << "quadrilateral while loop" << endl;
         isValid = true;
         if(hasCoincidingPoints(points)){
-             cout << "has coinciding points" << endl;
             setPoint(bRight, randomNum(50, 100),randomNum(0, 50));
             setPoint(tRight, randomNum(50, 100),randomNum(50, 100));
             setPoint(tLeft, randomNum(0, 50),randomNum(50, 100));
@@ -694,13 +706,11 @@ Quadrilateral buildQuadrilateral(){
         }
         
         if(areEqual(quadrilateral.sideA.len, quadrilateral.sideC.len)){
-            cout << "has A and C are equal" << endl;
             setPoint(bRight, randomNum(0, 50),randomNum(50, 100));
             quadrilateral.bRight = bRight;
             isValid = false;
         }
         if(areEqual(quadrilateral.sideB.len, quadrilateral.sideD.len)){
-             cout << "has B and D are equal" << endl;
             setPoint(tRight, randomNum(0, 50),randomNum(50, 100));
             setPoint(tLeft, randomNum(0, 50),randomNum(50, 100));
             quadrilateral.tRight = tRight;
@@ -708,13 +718,11 @@ Quadrilateral buildQuadrilateral(){
             isValid = false;
         }
         if(areEqual(quadrilateral.sideA.slope, quadrilateral.sideC.slope)){
-            cout << "slope A and C are equal" << endl;
             setPoint(bRight, randomNum(0, 50),randomNum(50, 100));
             quadrilateral.bRight = bRight;
             isValid = false;
         }
         if(areEqual(quadrilateral.sideB.slope, quadrilateral.sideD.slope)){
-             cout << "slope B and D are equal" << endl;
             setPoint(tRight, randomNum(0, 50),randomNum(50, 100));
             quadrilateral.tRight = tRight;
             isValid = false;
@@ -728,35 +736,34 @@ Quadrilateral buildQuadrilateral(){
 }
 
 Quadrilateral createShape(const int& shapeNum ){
-    cout << "made it to create shape" <<endl;
     Quadrilateral quadrilateral;
     switch (shapeNum){
         case 0:
-            cout << "made it to Quad" <<endl;
+            //cout << "made it to Quad" <<endl;
             quadrilateral = buildQuadrilateral();
             break;
         case 1 :
-            cout << "made it to Parallelagram" <<endl;
+            //cout << "made it to Parallelagram" <<endl;
             quadrilateral = buildParallelagram();
             break;
         case 2:
-            cout << "made it to buildRhombus" <<endl;
+            //cout << "made it to buildRhombus" <<endl;
              quadrilateral = buildRhombus();
             break;
         case 3:
-            cout << "made it to buildSquare" <<endl;
+            //cout << "made it to buildSquare" <<endl;
             quadrilateral = buildSquare();
             break;
         case 4:
-            cout << "made it to buildRectangle" <<endl;
+            //cout << "made it to buildRectangle" <<endl;
             quadrilateral = buildRectangle();
             break;              //execution of subsequent statements is terminated
         case 5:
-             cout << "made it to buildTrapezoid" <<endl;
+             //cout << "made it to buildTrapezoid" <<endl;
              quadrilateral = buildTrapezoid();
             break;
         case 6:
-            cout << "made it to buildKite" <<endl;
+            //cout << "made it to buildKite" <<endl;
             quadrilateral = buildKite();
             break;
         default:
@@ -784,14 +791,13 @@ void pickRandomOutput(vector<string>& possibleOutShapes, ofstream& expectedOutSt
         string shapeType = shapeTypes[ shapeNum ];
         possibleOutShapes.push_back( shapeType );
         expectedOutStream << shapeType << endl;
-
         if( !(shapeNum > ( totalShapeTypes - 4 ) ) ){
             quadrilateral = createShape(shapeNum);
             outputCoordinates(quadrilateral, coordinatesOutStream);
              //print coordinates
         }else{
             string errorPoints = createError(shapeNum);
-            cout << errorPoints;
+            //cout << errorPoints;
             coordinatesOutStream << errorPoints;
              break;
         }

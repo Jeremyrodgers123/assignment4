@@ -245,7 +245,7 @@ bool inputRangeIsValid(const double& coordinate){
 
 void printError(int errorNum, std::ofstream& outputStream ){
     outputStream << "error " << errorNum << std::endl;
-    std::cout << "error " << errorNum << std::endl;
+    //std::cout << "error " << errorNum << std::endl;
     outputStream.close();
     exit(0);
 }
@@ -302,7 +302,7 @@ Quadrilateral readInputAsQuad(std::fstream& inputStream, std::ofstream& outputSt
     
     Point intersection;
     if(lineIntersects(point0, point1, point2, point3, intersection)) {
-        std::cout << "error on side A or C" << std::endl;
+        //std::cout << "error on side A or C" << std::endl;
         //handles concave line
         if( !(point1.y < intersection.y) ){
           printError(3, outputStream);
@@ -311,7 +311,10 @@ Quadrilateral readInputAsQuad(std::fstream& inputStream, std::ofstream& outputSt
     }
   
    if(lineIntersects(point1, point2, point3, point0, intersection)) {
-       std::cout << "error on side B or D" << std::endl;
+       //std::cout << "error on side B or D" << std::endl;
+       if( !(point3.x < intersection.x) ){
+           printError(3, outputStream);
+       }
        printError(3, outputStream);
     }
 //    if(lineIntersects(point0, point1, point2, point3 ) || lineIntersects(point1, point2, point3, point0)){
@@ -344,10 +347,8 @@ void getInnerAngles(Quadrilateral& quadrilateral){
 void classifyAsSquareOrRectangle(Quadrilateral& quadrilateral){
     if(quadrilateral.uniqueSideLen.size() == 1){
         quadrilateral.type = "square";
-        std::cout << "square" << std::endl;
     }else if(quadrilateral.uniqueSideLen.size() == 2) {
         quadrilateral.type = "rectangle";
-        std::cout << "rectangle" << std::endl;
     }
 }
 
@@ -366,24 +367,19 @@ void classifyQuadrilateral(Quadrilateral& quadrilateral){
         if(quadrilateral.rightAngleCount == 0){
             if(quadrilateral.uniqueSideLen.size() == 1){
                 quadrilateral.type = "rhombus";
-                std::cout << "rhombus" << std::endl;
             }else{
                 quadrilateral.type = "parallelagram";
-                std::cout << "parallelagram" << std::endl;
             }
         }
         //Trapizoid
     }else if(quadrilateral.parallelCount == 1){
         quadrilateral.type = "trapezoid";
-        std::cout << "trapezoid" << std::endl;
     }else{
         //check if kite
         if(quadrilateral.uniqueSideLen.size() == 2){
             quadrilateral.type = "kite";
-            std::cout << "kite" << std::endl;
         }else{
             quadrilateral.type = "quadrilateral";
-            std::cout << "quadrilateral" << std::endl;
         }
     }
 }

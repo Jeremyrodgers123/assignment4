@@ -7,7 +7,8 @@ diff $1 $2
 val=$?
 if [ $val -eq 0 ]
 then
-echo "PASS"
+#echo "PASS"
+    :
 elif [ $val -eq 1 ]
 then
 echo "*********"
