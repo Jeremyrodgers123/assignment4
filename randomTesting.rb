@@ -18,3 +18,5 @@ end
 
 system("xcrun llvm-profdata merge -sparse #{prevCoverage}.profdata -o main.profdata");
 system("xcrun llvm-cov show ./main -instr-profile=main.profdata main.cpp");
+system("cp main.profdata coverage.txt");
+system("cp main.profdata coverage.profdata");

@@ -42,6 +42,9 @@ struct Quadrilateral {
 
 //checks if two double values are equal within a tolerance.
 bool areEqual(double a, double b){
+    if(a ==INFINITY && b == INFINITY){
+        return true;
+    }
     return fabs(a - b) < 0.0000001;
 }
 // uses distance formula to calculate the distance between two points
