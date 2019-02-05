@@ -305,17 +305,22 @@ Quadrilateral readInputAsQuad(std::fstream& inputStream, std::ofstream& outputSt
         //std::cout << "error on side A or C" << std::endl;
         //handles concave line
         if( !(point1.y < intersection.y) ){
-          printError(3, outputStream);
+            if(point2.y < intersection.y || point3.y < intersection.y){
+                std::cout << "interserction: " << intersection.x << ", " << intersection.y << std::endl;
+                printError(3, outputStream);
+            }
         }
-        
     }
-  
+  //|| (point2.x < intersection.x)
    if(lineIntersects(point1, point2, point3, point0, intersection)) {
-       //std::cout << "error on side B or D" << std::endl;
+       //&&
        if( !(point3.x < intersection.x) ){
-           printError(3, outputStream);
+           if(!(point2.x >= intersection.x)){
+               std::cout << "interserction: " << intersection.x << ", " << intersection.y << std::endl;
+                printError(3, outputStream);
+           }
        }
-       printError(3, outputStream);
+       //printError(3, outputStream);
     }
 //    if(lineIntersects(point0, point1, point2, point3 ) || lineIntersects(point1, point2, point3, point0)){
 //        printError(3, outputStream);

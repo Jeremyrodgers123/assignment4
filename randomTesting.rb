@@ -5,6 +5,7 @@ for i in 0..1000 do
     system("./testGenerator ./testGeneratedInput/coordinates#{i}.txt ./testExpectedOut/coordinates#{i}Out.txt");
     system( "./main ./testGeneratedInput/coordinates#{i}.txt ./outputFiles/output#{i}.txt");
     system("xcrun llvm-profdata merge -sparse #{prevCoverage}.profdata default.profraw -o #{i}.profdata");
+    #system("diff ./testExpectedOut/coordinates#{i}Out.txt ./outputFiles/output#{i}.txt")
     system( "./test.sh ./testExpectedOut/coordinates#{i}Out.txt ./outputFiles/output#{i}.txt #{i}")
     # puts ""
     system("rm #{prevCoverage}.profdata")

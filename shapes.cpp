@@ -285,7 +285,7 @@ Quadrilateral buildRhombus(){
             isValid = true;
         }
         //if it's a square, regenerate
-        if ( rhombus.bRight.y == 0 && rhombus.tLeft.x == 0 ){
+        if ( ((rhombus.bRight.y == 0) && (rhombus.tLeft.x == 0)) || ((rhombus.bRight.x == 0) && (rhombus.tLeft.y == 0)) ){
             isValid = false;
         }
         vector<double> points = convertToDoubleVector(rhombus);
@@ -302,7 +302,7 @@ Quadrilateral buildRhombus(){
     double SideC = calcDistance(rhombus.tRight, rhombus.tLeft);
     double SideD = calcDistance(rhombus.tLeft, rhombus.bLeft);
    // getNewPoint(30, length);
-    
+    assert(!((rhombus.bRight.y == 0) && (rhombus.tLeft.x == 0)) );
     assert(areEqual(SideA, SideB));
     assert(areEqual(SideB, SideC));
     assert(areEqual(SideC, SideD));
@@ -355,10 +355,9 @@ Quadrilateral buildParallelagram(){
             }
             if(areEqual(parallelagram.sideA.len, parallelagram.sideB.len) && areEqual(parallelagram.sideC.len, parallelagram.sideD.len)){
                 isValid = false;
-//                cout  << "Side A: " << parallelagram.sideA.len << endl;
-//                 cout  << "Side B: " << parallelagram.sideB.len << endl;
-//                 cout  << "Side C: " << parallelagram.sideC.len << endl;
-//                 cout  << "Side D: " << parallelagram.sideD.len << endl;
+            }
+            if(hasColinearPoints(parallelagram)){
+                isValid = false;
             }
         }
         parallelagram.sideA.rise = rise;
@@ -386,6 +385,9 @@ Quadrilateral buildParallelagram(){
             if(areEqual(parallelagram.sideA.len, parallelagram.sideB.len) && areEqual(parallelagram.sideC.len, parallelagram.sideD.len)){
                 isValid = false;
                
+            }
+            if(hasColinearPoints(parallelagram)){
+                isValid = false;
             }
         }
 //        cout  << "Side A: " << parallelagram.sideA.len << endl;
@@ -630,9 +632,9 @@ string generateError3(){
     ostringstream sstream;
     string ret;
     Point point1, point2, point3;
-    setPoint(point1, randomNum(50, 100),randomNum(0, 50));
-    setPoint(point2, randomNum(0, 50),randomNum(50, 100));
-    setPoint(point3, randomNum(50, 100),randomNum(50, 100));
+    setPoint(point1, randomNum(50, 100),randomNum(0, 25));
+    setPoint(point2, randomNum(0, 50),randomNum(75, 100));
+    setPoint(point3, randomNum(75, 100),randomNum(75, 100));
     sstream << point1.x << " " << point1.y << " " << point2.x << " " << point2.y << " " << point3.x << " " << point3.y << endl;
     ret = sstream.str();
     return ret;
@@ -702,7 +704,7 @@ Quadrilateral buildQuadrilateral(){
             setPoint(tLeft, randomNum(0, 50),randomNum(50, 100));
             points = convertToDoubleVector(quadrilateral);
             isValid = false;
-            continue;
+            //continue;
         }
         
         if(areEqual(quadrilateral.sideA.len, quadrilateral.sideC.len)){
