@@ -1,5 +1,2 @@
-parallelogram
-parallelogram
-square
-rectangle
-error 3
+kite
+error 1

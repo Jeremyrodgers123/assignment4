@@ -1,2 +1,8 @@
 rectangle
-error 4
+rectangle
+parallelogram
+rectangle
+trapezoid
+parallelogram
+rhombus
+error 1

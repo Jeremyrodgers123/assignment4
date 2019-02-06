@@ -1,6 +1,6 @@
-rectangle
-rectangle
 square
-square
+rectangle
+quadrilateral
 rhombus
-error 3
+kite
+error 1

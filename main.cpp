@@ -314,9 +314,11 @@ Quadrilateral readInputAsQuad(std::fstream& inputStream, std::ofstream& outputSt
   //|| (point2.x < intersection.x)
    if(lineIntersects(point1, point2, point3, point0, intersection)) {
        //&&
-       if( !(point3.x < intersection.x) ){
-           if(!(point2.x >= intersection.x)){
+       if( (point3.x > intersection.x) ){
+           if((point2.x <= intersection.x)){
 //               std::cout << "interserction: " << intersection.x << ", " << intersection.y << std::endl;
+//               std::cout << "point2: " << point2.x << " ," << point2.y << std::endl;
+//               std::cout << "point3: " << point3.x << " ," << point3.y << std::endl;
                 printError(3, outputStream);
            }
        }

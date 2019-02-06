@@ -1,4 +1,2 @@
-quadrilateral
 parallelogram
-trapezoid
-error 4
+error 2

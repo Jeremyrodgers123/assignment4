@@ -1,2 +1,2 @@
-quadrilateral
-error 3
+square
+error 2

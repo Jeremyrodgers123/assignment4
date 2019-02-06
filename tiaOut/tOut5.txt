@@ -1,2 +1,4 @@
-trapezoid
-error 3
+square
+kite
+parallelogram
+error 4

@@ -1,4 +1,5 @@
+trapezoid
 square
-square
-quadrilateral
+rectangle
+parallelogram
 error 3

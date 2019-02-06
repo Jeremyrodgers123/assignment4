@@ -26,6 +26,7 @@ fuzzer:
 tiaFile:
 	clang++ -std=c++11 tiaClassifier.cpp -o tia
 	clang++ -std=c++11 main.cpp -o main
+	clang++ -std=c++11 testGenerator.cpp shapes.cpp -o testGenerator
 
 differential: tiaFile
 	ruby differentialTesting.rb

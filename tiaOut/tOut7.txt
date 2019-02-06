@@ -1,4 +1,3 @@
-rhombus
-trapezoid
-quadrilateral
-error 4
+kite
+rectangle
+error 1

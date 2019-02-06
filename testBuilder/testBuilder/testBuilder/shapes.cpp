@@ -9,7 +9,7 @@
 #include "shapes.hpp"
 
 
-vector<string> shapeTypes {"quadrilateral", "parallelagram", "rhombus", "square", "rectangle", "trapezoid", "kite"};
+vector<string> shapeTypes {"quadrilateral", "parallelogram", "rhombus", "square", "rectangle", "trapezoid", "kite"};
 
 bool areEqual(double a, double b){
     if(a == INFINITY && b == INFINITY){
@@ -327,8 +327,8 @@ void changeRiseAndRun(int& rise, int& run){
 }
 
 Quadrilateral buildParallelagram(){
-    Quadrilateral parallelagram;
-    //parallelagram = buildRhombus();
+    Quadrilateral parallelogram;
+    //parallelogram = buildRhombus();
     //save TL & BL OR BL & BR
     bool changeHorizontally = randomTrueFalse();
     int rise = -1;
@@ -338,82 +338,82 @@ Quadrilateral buildParallelagram(){
         //change TR and BR
         bool isValid = false;
         while(!isValid){
-            parallelagram = buildRhombus();
-            rise = parallelagram.sideA.rise;
-            run = parallelagram.sideA.run;
+            parallelogram = buildRhombus();
+            rise = parallelogram.sideA.rise;
+            run = parallelogram.sideA.run;
             changeRiseAndRun(rise, run);
-            setPoint(point1, parallelagram.tLeft.x + run, parallelagram.tLeft.y + rise);
-            setPoint(point2, parallelagram.bLeft.x + run, parallelagram.bLeft.y + rise);
+            setPoint(point1, parallelogram.tLeft.x + run, parallelogram.tLeft.y + rise);
+            setPoint(point2, parallelogram.bLeft.x + run, parallelogram.bLeft.y + rise);
             isValid = checkValidParamsCreated(point1, point2);
-            vector<double> points = convertToDoubleVector(parallelagram);
+            vector<double> points = convertToDoubleVector(parallelogram);
           
-            parallelagram.tRight = point1;
-            parallelagram.bRight = point2;
-            calcAllDistance(parallelagram);
+            parallelogram.tRight = point1;
+            parallelogram.bRight = point2;
+            calcAllDistance(parallelogram);
             if(hasCoincidingPoints(points)){
                 isValid = false;
             }
-            if(areEqual(parallelagram.sideA.len, parallelagram.sideB.len) && areEqual(parallelagram.sideC.len, parallelagram.sideD.len)){
+            if(areEqual(parallelogram.sideA.len, parallelogram.sideB.len) && areEqual(parallelogram.sideC.len, parallelogram.sideD.len)){
                 isValid = false;
             }
-            if(hasColinearPoints(parallelagram)){
+            if(hasColinearPoints(parallelogram)){
                 isValid = false;
             }
         }
-        parallelagram.sideA.rise = rise;
-        parallelagram.sideA.run = run;
-        parallelagram.sideC.rise = rise;
-        parallelagram.sideC.run = run;
+        parallelogram.sideA.rise = rise;
+        parallelogram.sideA.run = run;
+        parallelogram.sideC.rise = rise;
+        parallelogram.sideC.run = run;
     }else{
         //changing vertical points TL and TR
         bool isValid = false;
         while(!isValid){
-            parallelagram = buildRhombus();
-            rise = parallelagram.sideB.rise;
-            run = parallelagram.sideB.run;
+            parallelogram = buildRhombus();
+            rise = parallelogram.sideB.rise;
+            run = parallelogram.sideB.run;
             changeRiseAndRun(rise, run);
-            setPoint(point1, parallelagram.bLeft.x + run, parallelagram.bLeft.y + rise);
-            setPoint(point2, parallelagram.bRight.x + run, parallelagram.bRight.y + rise);
+            setPoint(point1, parallelogram.bLeft.x + run, parallelogram.bLeft.y + rise);
+            setPoint(point2, parallelogram.bRight.x + run, parallelogram.bRight.y + rise);
             isValid = checkValidParamsCreated(point1, point2);
-            vector<double> points = convertToDoubleVector(parallelagram);
-            parallelagram.tLeft = point1;
-            parallelagram.tRight = point2;
-            calcAllDistance(parallelagram);
+            vector<double> points = convertToDoubleVector(parallelogram);
+            parallelogram.tLeft = point1;
+            parallelogram.tRight = point2;
+            calcAllDistance(parallelogram);
             if(hasCoincidingPoints(points)){
                 isValid = false;
             }
-            if(areEqual(parallelagram.sideA.len, parallelagram.sideB.len) && areEqual(parallelagram.sideC.len, parallelagram.sideD.len)){
+            if(areEqual(parallelogram.sideA.len, parallelogram.sideB.len) && areEqual(parallelogram.sideC.len, parallelogram.sideD.len)){
                 isValid = false;
                
             }
-            if(hasColinearPoints(parallelagram)){
+            if(hasColinearPoints(parallelogram)){
                 isValid = false;
             }
         }
-//        cout  << "Side A: " << parallelagram.sideA.len << endl;
-//        cout  << "Side B: " << parallelagram.sideB.len << endl;
-//        cout  << "Side C: " << parallelagram.sideC.len << endl;
-//        cout  << "Side D: " << parallelagram.sideD.len << endl;
-//        parallelagram.tLeft = point1;
-//        parallelagram.tRight = point2;
-        parallelagram.sideB.rise = rise;
-        parallelagram.sideB.run = run;
-        parallelagram.sideD.rise = rise;
-        parallelagram.sideD.run = run;
+//        cout  << "Side A: " << parallelogram.sideA.len << endl;
+//        cout  << "Side B: " << parallelogram.sideB.len << endl;
+//        cout  << "Side C: " << parallelogram.sideC.len << endl;
+//        cout  << "Side D: " << parallelogram.sideD.len << endl;
+//        parallelogram.tLeft = point1;
+//        parallelogram.tRight = point2;
+        parallelogram.sideB.rise = rise;
+        parallelogram.sideB.run = run;
+        parallelogram.sideD.rise = rise;
+        parallelogram.sideD.run = run;
     }
-     parallelagram.type = "parallelagram";
-    calcAllDistance(parallelagram);
-    calcAllSlopes(parallelagram);
-    assert(areEqual(parallelagram.sideA.len, parallelagram.sideC.len));
-    assert(areEqual(parallelagram.sideB.len, parallelagram.sideD.len));
-    assert(areEqual(parallelagram.sideA.rise, parallelagram.sideC.rise));
-    assert(areEqual(parallelagram.sideA.run, parallelagram.sideC.run));
-    assert(areEqual(parallelagram.sideB.rise, parallelagram.sideD.rise));
-    assert(areEqual(parallelagram.sideD.run, parallelagram.sideD.run));
-    //double slopeA = (double)parallelagram.sideA.rise/parallelagram.sideA.run;
-    //assert(areEqual(slopeA, parallelagram.sideA.slope));
-    //printPoints(parallelagram);
-    return parallelagram;
+     parallelogram.type = "parallelogram";
+    calcAllDistance(parallelogram);
+    calcAllSlopes(parallelogram);
+    assert(areEqual(parallelogram.sideA.len, parallelogram.sideC.len));
+    assert(areEqual(parallelogram.sideB.len, parallelogram.sideD.len));
+    assert(areEqual(parallelogram.sideA.rise, parallelogram.sideC.rise));
+    assert(areEqual(parallelogram.sideA.run, parallelogram.sideC.run));
+    assert(areEqual(parallelogram.sideB.rise, parallelogram.sideD.rise));
+    assert(areEqual(parallelogram.sideD.run, parallelogram.sideD.run));
+    //double slopeA = (double)parallelogram.sideA.rise/parallelogram.sideA.run;
+    //assert(areEqual(slopeA, parallelogram.sideA.slope));
+    //printPoints(parallelogram);
+    return parallelogram;
 }
 
 vector<Point> moveAlongTrapazoidLine(const Point& min, const Point& max, const int& gcd, Quadrilateral& quadrilateral){
@@ -591,6 +591,7 @@ string generateError1(){
                 sstream << "\n";
             }
         }
+        ret = sstream.str();
         return ret;
     }else if(path == 2){
         for( int i = 0; i < 6; i++){ //6 is the number of valid points
