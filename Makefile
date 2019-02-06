@@ -22,3 +22,10 @@ fuzzer:
 	clang++ -std=c++11 testGenerator.cpp shapes.cpp -o testGenerator
 	touch blanktest.profdata
 	ruby randomTesting.rb
+
+tiaFile:
+	clang++ -std=c++11 tiaClassifier.cpp -o tia
+	clang++ -std=c++11 main.cpp -o main
+
+differential: tiaFile
+	ruby differentialTesting.rb

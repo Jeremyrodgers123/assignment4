@@ -1,0 +1,6 @@
+rectangle
+rectangle
+square
+square
+rhombus
+error 3

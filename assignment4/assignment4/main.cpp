@@ -306,7 +306,7 @@ Quadrilateral readInputAsQuad(std::fstream& inputStream, std::ofstream& outputSt
         //handles concave line
         if( !(point1.y < intersection.y) ){
             if(point2.y < intersection.y || point3.y < intersection.y){
-                std::cout << "interserction: " << intersection.x << ", " << intersection.y << std::endl;
+//                std::cout << "interserction: " << intersection.x << ", " << intersection.y << std::endl;
                 printError(3, outputStream);
             }
         }
@@ -316,7 +316,7 @@ Quadrilateral readInputAsQuad(std::fstream& inputStream, std::ofstream& outputSt
        //&&
        if( !(point3.x < intersection.x) ){
            if(!(point2.x >= intersection.x)){
-               std::cout << "interserction: " << intersection.x << ", " << intersection.y << std::endl;
+//               std::cout << "interserction: " << intersection.x << ", " << intersection.y << std::endl;
                 printError(3, outputStream);
            }
        }
@@ -373,7 +373,7 @@ void classifyQuadrilateral(Quadrilateral& quadrilateral){
             if(quadrilateral.uniqueSideLen.size() == 1){
                 quadrilateral.type = "rhombus";
             }else{
-                quadrilateral.type = "parallelagram";
+                quadrilateral.type = "parallelogram";
             }
         }
         //Trapizoid
